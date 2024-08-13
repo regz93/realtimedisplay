@@ -3,7 +3,7 @@
 /* Déclaration de la police */
 @font-face {
     font-family: 'MaPolice';
-    src: url('gustavo.otf') format('truetype');
+    src: url('gustavo.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
