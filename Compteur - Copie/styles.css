@@ -1,0 +1,155 @@
+/* styles.css */
+
+/* Déclaration de la police */
+@font-face {
+    font-family: 'MaPolice';
+    src: url('fonts/gustavo.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Utilisation de la police pour le body */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    margin: 0;
+    font-family: 'MaPolice';
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #000000;
+    font-size: 2em;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    gap: 20px; /* Add spacing between the two sections */
+}
+
+.counter-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+}
+
+.logo {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.counter-container {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+#counter1 {
+    font-size: 2em;
+    color: #ffffff;
+    text-align: center;
+    width: 250px;
+    height: 60px;
+    background-color: #0496e6; /* Couleur de fond pour le compteur Nm */
+    padding: 10px;
+    border-radius: 10px;
+    border: 5px solid #ffffff;
+    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+#counter2 {
+    font-size: 2em;
+    color: #e0e0e0;
+    text-align: center;
+    width: 250px;
+    height: 60px;
+    background-color: #547e79; /* Couleur de fond pour le compteur Ne */
+    padding: 10px;
+    border-radius: 10px;
+    border: 5px solid #ffffff;
+    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.digit-wrapper {
+    position: relative;
+    width: 1.5em;
+    height: 1.5em;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.digit {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+.digit-old {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.digit-new {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes roll-up {
+    from {
+        transform: translateY(100%);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes roll-down {
+    from {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 1;
+    }
+}
+
+.roll-up .digit-old {
+    animation: roll-down 0.5s ease-in-out;
+}
+
+.roll-up .digit-new {
+    animation: roll-up 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.roll-down .digit-old {
+    animation: roll-up 0.5s ease-in-out;
+}
+
+.roll-down .digit-new {
+    animation: roll-down 0.5s ease-in-out;
+    opacity: 1;
+}
