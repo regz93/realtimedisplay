@@ -40,6 +40,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     width: 45%; /* Ajustez si nécessaire */
+    position: relative; /* Nécessaire pour le positionnement absolu de l'image */
 }
 
 /* Conteneur du logo */
@@ -192,26 +193,31 @@ h1 {
     font-size: 28px;
 }
 
+/* Style commun pour tous les carrés */
 .square {
     position: absolute;
     bottom: 0;
     width: 80px; /* Ajustez la taille du carré */
     height: 40px;
     background: #fff;
-    border: 5px solid #000;
+    border: 5px solid #000; /* Couleur par défaut de la bordure */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-family: 'DM Sans', sans-serif; /* Application de DM Sans */
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px; /* Taille de la police pour le texte dans le carré */
+    font-weight: bold; /* Met le texte en gras */
 }
 
+/* Style spécifique pour Nutrimuscle */
 .square1 {
-    border-color: #0496e6; /* Couleur spécifique pour Nutrimuscle */
+    border-color: #0496e6; /* Couleur bleue spécifique */
 }
 
+/* Style spécifique pour Nutrielement */
 .square2 {
-    border-color: #547e79; /* Couleur spécifique pour Nutrielement */
+    border-color: #547e79; /* Couleur verte spécifique */
 }
 
 /* Styles pour les labels de la jauge */
@@ -224,3 +230,14 @@ h1 {
     color: #000;
     margin-top: 0.5%; /* Marge au-dessus des labels pour séparer de la jauge */
 }
+
+/* Image superposée */
+.overlay-image {
+    position: absolute;
+    top: 5%; /* Ajustez la position verticale si nécessaire */
+    left: 5%; /* Ajustez la position horizontale si nécessaire */
+    width: 100%; /* Augmenter la largeur de l'image en pourcentage du conteneur parent */
+    height: auto; /* Ajustez automatiquement la hauteur pour maintenir les proportions */
+    z-index: 10; /* Assurez-vous que l'image est au-dessus du conteneur */
+}
+
