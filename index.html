@@ -9,8 +9,11 @@
 <body>
     <h1>Suivi des commandes</h1>
     <div class="container">
+        <!-- Section de compteur pour Nutrimuscle -->
         <div class="counter-section">
-            <img src="logo-nutrimuscle.png" alt="Nutrimuscle Logo" class="logo">
+            <div class="logo-container">
+                <img src="logo-nutrimuscle.png" alt="Nutrimuscle Logo" class="logo">
+            </div>
             <div class="counter-container">
                 <div id="counter1">
                     <div class="digit-wrapper">
@@ -26,10 +29,17 @@
                         <div class="digit">0</div>
                     </div>
                 </div>
+                <p class="counter-title">Real time order count</p>
+                <div class="gauge-container">
+                    <div class="gauge" id="gauge1"></div>
+                </div>
             </div>
         </div>
+        <!-- Section de compteur pour Nutrielement -->
         <div class="counter-section">
-            <img src="logo-nutrielement.png" alt="Nutrielement Logo" class="logo">
+            <div class="logo-container">
+                <img src="logo-nutrielement.png" alt="Nutrielement Logo" class="logo">
+            </div>
             <div class="counter-container">
                 <div id="counter2">
                     <div class="digit-wrapper">
@@ -44,6 +54,10 @@
                     <div class="digit-wrapper">
                         <div class="digit">0</div>
                     </div>
+                </div>
+                <p class="counter-title">Real time order count</p>
+                <div class="gauge-container">
+                    <div class="gauge" id="gauge2"></div>
                 </div>
             </div>
         </div>
