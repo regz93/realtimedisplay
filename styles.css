@@ -110,41 +110,19 @@ h1 {
 /* Conteneur de la jauge */
 .gauge-container {
     position: relative;
-    width: 100%; /* Prend toute la largeur disponible du conteneur */
-    height: 350px; /* Hauteur pour créer un demi-cercle horizontal */
+    width: 100%; 
+    height: 250px; /* Hauteur pour créer un demi-cercle */
     margin-top: 20px;
     overflow: hidden;
-    background-image: url('skill-level-on-meter-indicator-shows-epert-png.webp'); /* Arrière-plan de la jauge */
-    background-size: cover; /* Ajuste la taille de l'image */
-    background-position: center; /* Centre l'image */
 }
 
-/* Demi-cercle pour la jauge */
-.gauge {
-    width: 100%; /* Largeur du demi-cercle */
-    height: 100%; /* Hauteur du demi-cercle (moitié de la largeur) */
-    border-radius: 100px 100px 0 0; /* Crée un demi-cercle horizontal */
-    background: conic-gradient(#4caf50 0%, #ddd 0%);
-    border: 10px solid #ddd;
-    position: absolute;
-    bottom: 0; /* Place le demi-cercle au bas du conteneur */
-    left: 0;
-    transform: rotate(180deg); /* Oriente le demi-cercle pour commencer depuis la gauche */
-    transform-origin: bottom center; /* Assure une rotation correcte */
-}
-
-.gauge-inner {
+/* Demi-cercle pour la jauge (sera géré par D3.js) */
+#gauge1, #gauge2 {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: conic-gradient(#4caf50 0%, #ddd 0%);
-    transform: rotate(180deg); /* Oriente le demi-cercle pour commencer depuis la gauche */
-    transform-origin: bottom center; /* Assure une rotation correcte */
 }
 
+/* Styles des chiffres */
 .digit-wrapper {
     position: relative;
     width: 1.5em;
@@ -157,7 +135,7 @@ h1 {
     position: absolute;
     width: 100%;
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'MaPolice';
     font-weight: bold;
     line-height: 1.5em;
 }
@@ -210,4 +188,31 @@ h1 {
 .roll-down .digit-new {
     animation: roll-down 0.5s ease-in-out;
     opacity: 1;
+}
+
+/* Styles pour le carré de la jauge */
+.gauge-container .gauge-text {
+    font-size: 18px;
+
+}
+
+.square {
+    position: absolute;
+    bottom: 0;
+    width: 80px; /* Ajustez la taille du carré */
+    height: 40px;
+    background: #fff;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.square1 {
+    border-color: #0496e6; /* Couleur spécifique pour Nutrimuscle */
+}
+
+.square2 {
+    border-color: #547e79; /* Couleur spécifique pour Nutrielement */
 }
