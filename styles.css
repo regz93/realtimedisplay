@@ -33,7 +33,7 @@ h1 {
 .container {
     position: relative;
     width: 90%; /* Laisser 5% de marge à gauche et à droite */
-    height: 80%; /* Laisser 10% de marge en bas */
+    height: 90%; /* Laisser 10% de marge en bas */
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -110,16 +110,21 @@ h1 {
 /* Conteneur de la jauge */
 .gauge-container {
     position: relative;
-    width: 100%; 
-    height: 250px; /* Hauteur pour créer un demi-cercle */
-    margin-top: 20px;
+    width: 100%;
+    height: 50%; /* Hauteur du conteneur pour s'adapter à la jauge */
+    margin-top: 5%; /* Marge au dessus de la jauge */
+    margin-bottom: 5%; /* Marge en dessous de la jauge */
+    display: flex;
+    align-items: center; /* Centre verticalement le contenu */
+    justify-content: center; /* Centre horizontalement le contenu */
     overflow: hidden;
 }
 
 /* Demi-cercle pour la jauge (sera géré par D3.js) */
 #gauge1, #gauge2 {
     width: 100%;
-    height: 100%;
+    height: 60%; /* Hauteur ajustée pour la jauge */
+    display: block;
 }
 
 /* Styles des chiffres */
