@@ -42,8 +42,17 @@ function updateCounter(counterElement, count) {
     return count;
 }
 
-// Set interval to update the counters every 2 seconds
+function updateGauge(gaugeElement, value) {
+    // Value should be between 0 and 100
+    const percentage = Math.min(Math.max(value, 0), 100);
+    gaugeElement.style.background = `conic-gradient(#4caf50 ${percentage}%, #ddd ${percentage}%)`;
+}
+
+// Set interval to update the counters and gauges every 2 seconds
 setInterval(() => {
     count1 = updateCounter(counterElement1, count1);
     count2 = updateCounter(counterElement2, count2);
+    
+    updateGauge(document.getElementById('gauge1'), count1 % 101); // Just a sample, adjust as needed
+    updateGauge(document.getElementById('gauge2'), count2 % 101); // Just a sample, adjust as needed
 }, 2000);
