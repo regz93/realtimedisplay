@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: 'DM Sans', sans-serif;
     font-weight: bold; /* Met la police en gras */
-    font-size: 16px; /* Définissez la taille de la police (ajustez selon vos besoins) */
+    font-size: 18px; /* Définissez la taille de la police (ajustez selon vos besoins) */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -220,7 +220,7 @@ h1 {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 18px;
     color: #000;
     margin-top: 0.5%; /* Marge au-dessus des labels pour séparer de la jauge */
 }
