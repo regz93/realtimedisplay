@@ -237,7 +237,7 @@ h1 {
     top: 50%; /* Position verticale au milieu du conteneur */
     left: 50%; /* Position horizontale au milieu du conteneur */
     transform: translate(-50%, -50%); /* Centrer l'image par rapport à ses propres dimensions */
-    width: 65%; /* Ajuster la largeur en pourcentage du conteneur parent (ou une valeur fixe si nécessaire) */
+    width: 70%; /* Ajuster la largeur en pourcentage du conteneur parent (ou une valeur fixe si nécessaire) */
     height: auto; /* Ajuster automatiquement la hauteur pour maintenir les proportions */
     z-index: 10; /* Assurez-vous que l'image est au-dessus du conteneur */
 }
