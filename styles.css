@@ -111,7 +111,7 @@ h1 {
 .gauge-container {
     position: relative;
     width: 100%; /* Prend toute la largeur disponible du conteneur */
-    height: 250px; /* Hauteur pour créer un demi-cercle horizontal */
+    height: 350px; /* Hauteur pour créer un demi-cercle horizontal */
     margin-top: 20px;
     overflow: hidden;
     background-image: url('skill-level-on-meter-indicator-shows-epert-png.webp'); /* Arrière-plan de la jauge */
