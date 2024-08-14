@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Déclaration de la police */
 @font-face {
     font-family: 'MaPolice';
@@ -10,81 +8,141 @@
 
 /* Utilisation de la police pour le body */
 body {
+    margin: 0;
+    font-family: 'MaPolice';
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #ffffff;
-    margin: 0;
-    font-family: 'MaPolice';
+    overflow: hidden; /* Évite les barres de défilement */
 }
 
+/* Style du titre */
 h1 {
-    margin-bottom: 20px;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
     color: #000000;
     font-size: 2em;
-    text-align: center;
+    margin: 0;
 }
 
+/* Conteneur principal pour le layout */
 .container {
+    position: relative;
+    width: 90%; /* Laisser 5% de marge à gauche et à droite */
+    height: 80%; /* Laisser 10% de marge en bas */
     display: flex;
-    width: 80%;
     justify-content: space-between;
-    gap: 20px; /* Add spacing between the two sections */
+    align-items: flex-end;
+    margin: 0 auto;
 }
 
+/* Section du compteur */
 .counter-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 45%;
+    width: 45%; /* Ajustez si nécessaire */
+}
+
+/* Conteneur du logo */
+.logo-container {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .logo {
-    width: 150px; /* Adjust size as needed */
+    width: 300px; /* Ajustez la taille du logo */
     height: auto;
-    margin-bottom: 10px;
 }
 
+/* Conteneur du compteur */
 .counter-container {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 100%;
+    height: 100%; /* S'adapte à la hauteur disponible */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Compteurs */
+#counter1, #counter2 {
+    font-size: 2em;
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 5px solid #ffffff;
+    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px; /* Espacement entre le compteur et la jauge */
 }
 
 #counter1 {
-    font-size: 2em;
-    color: #ffffff;
-    text-align: center;
-    width: 250px;
-    height: 60px;
     background-color: #0496e6; /* Couleur de fond pour le compteur Nm */
-    padding: 10px;
-    border-radius: 10px;
-    border: 5px solid #ffffff;
-    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.8);
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
+    color: #ffffff;
 }
 
 #counter2 {
-    font-size: 2em;
-    color: #e0e0e0;
-    text-align: center;
-    width: 250px;
-    height: 60px;
     background-color: #547e79; /* Couleur de fond pour le compteur Ne */
-    padding: 10px;
-    border-radius: 10px;
-    border: 5px solid #ffffff;
-    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.8);
-    display: flex;
-    justify-content: space-between;
+    color: #e0e0e0;
+}
+
+.counter-title {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #000000;
+    text-align: center;
+}
+
+/* Conteneur de la jauge */
+.gauge-container {
     position: relative;
+    width: 100%; /* Prend toute la largeur disponible du conteneur */
+    height: 250px; /* Hauteur pour créer un demi-cercle horizontal */
+    margin-top: 20px;
     overflow: hidden;
+    background-image: url('skill-level-on-meter-indicator-shows-epert-png.webp'); /* Arrière-plan de la jauge */
+    background-size: cover; /* Ajuste la taille de l'image */
+    background-position: center; /* Centre l'image */
+}
+
+/* Demi-cercle pour la jauge */
+.gauge {
+    width: 100%; /* Largeur du demi-cercle */
+    height: 100%; /* Hauteur du demi-cercle (moitié de la largeur) */
+    border-radius: 100px 100px 0 0; /* Crée un demi-cercle horizontal */
+    background: conic-gradient(#4caf50 0%, #ddd 0%);
+    border: 10px solid #ddd;
+    position: absolute;
+    bottom: 0; /* Place le demi-cercle au bas du conteneur */
+    left: 0;
+    transform: rotate(180deg); /* Oriente le demi-cercle pour commencer depuis la gauche */
+    transform-origin: bottom center; /* Assure une rotation correcte */
+}
+
+.gauge-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: conic-gradient(#4caf50 0%, #ddd 0%);
+    transform: rotate(180deg); /* Oriente le demi-cercle pour commencer depuis la gauche */
+    transform-origin: bottom center; /* Assure une rotation correcte */
 }
 
 .digit-wrapper {
