@@ -42,8 +42,8 @@ function updateCounter(counterElement, count) {
 
 function createGauge(containerId, value, maxPoints, previousAngle, color, squareClass) {
     var container = document.getElementById(containerId);
-    var w = container.offsetWidth;
-    var h = w / 2; // Hauteur de la jauge pour un demi-cercle
+    var w = container.offsetWidth; // Largeur du conteneur
+    var h = w / 2; // Hauteur pour un demi-cercle
     var outerRadius = w / 2;
     var innerRadius = w / 2 - 20;
 
@@ -91,12 +91,13 @@ function createGauge(containerId, value, maxPoints, previousAngle, color, square
             };
         });
 
-    // Création du carré au bas du demi-cercle
+    // Création du carré au milieu de la jauge
+    var squareSize = 80; // Taille du carré
     var square = svg.append("rect")
-        .attr("x", -40)
-        .attr("y", outerRadius - 40)
-        .attr("width", 80)
-        .attr("height", 40)
+        .attr("x", -squareSize / 2)
+        .attr("y", outerRadius - squareSize / 2)
+        .attr("width", squareSize)
+        .attr("height", squareSize)
         .attr("fill", "#fff")
         .attr("stroke", color)
         .attr("stroke-width", 2)
@@ -106,14 +107,25 @@ function createGauge(containerId, value, maxPoints, previousAngle, color, square
     var text = svg.append("text")
         .attr("class", "gauge-text")
         .attr("x", 0)
-        .attr("y", outerRadius - 20)
-        .attr("text-anchor", "middle") // Alignement horizontal
-        .attr("dominant-baseline", "middle") // Alignement vertical
-        .style("fill", color)
+        .attr("y", 0)
         .text(`${Math.round(percent)}%`); // Afficher le pourcentage actuel
+
+    // Ajouter des étiquettes à l'origine et à la fin de la jauge
+    svg.append("text")
+        .attr("x", -w / 2 + 10)
+        .attr("y", outerRadius + 20)
+        .attr("class", "gauge-text")
+        .text("0");
+
+    svg.append("text")
+        .attr("x", w / 2 - 10)
+        .attr("y", outerRadius + 20)
+        .attr("class", "gauge-text")
+        .text("Target");
 
     return newAngle; // Retourner l'angle actuel pour la prochaine mise à jour
 }
+
 
 
 function updateGauge(containerId, value, maxPoints, previousAngle, color, squareClass) {
