@@ -120,6 +120,15 @@ h1 {
     margin-bottom: 0.5%; /* Espace entre la jauge et les labels */
 }
 
+/*Style des titres des jauges */
+
+.gauge-title {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #000000;
+    text-align: center;
+}
+
 /* Styles des chiffres */
 .digit-wrapper {
     position: relative;
