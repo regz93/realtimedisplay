@@ -15,16 +15,16 @@ function updateCounter(counterElement, count) {
     formattedCount.split('').forEach((digit, index) => {
         const currentDigit = currentDigits[index] || '0';
         if (digit !== currentDigit) {
-            newHtml += 
+            newHtml += `
 <div class="digit-wrapper roll-up">
 <div class="digit digit-old">${currentDigit}</div>
 <div class="digit digit-new">${digit}</div>
-</div>;
+</div>`;
         } else {
-            newHtml += 
+            newHtml += `
 <div class="digit-wrapper">
 <div class="digit digit-new">${digit}</div>
-</div>;
+</div>`;
         }
     });
  
@@ -106,7 +106,7 @@ function createGauge(containerId, value = data[3][1], maxPoints = 80000  , previ
         .attr("class", "gauge-text")
         .attr("x", 0)
         .attr("y", 0)
-        .text(${Math.round(percent)}%); // Afficher le pourcentage actuel
+        .text(`${Math.round(percent)}%`); // Afficher le pourcentage actuel
  
     // Ajouter des étiquettes à l'origine et à la fin de la jauge
     svg.append("text")
@@ -139,7 +139,7 @@ async function fetchData() {
 // Mettre à jour les compteurs et les jauges toutes les 2 secondes
 setInterval(async () => {
     const data = await fetchData();
-    // Supposons que les données renvoyées aient des propriétés count1 et count2
+    // Supposons que les données renvoyées aient des propriétés `count1` et `count2`
     count1 = data[2][1];
     count2 = 0;
     netsales = data[3][1];
