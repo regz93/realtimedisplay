@@ -123,6 +123,7 @@ h1 {
 /* Titre de la jauge */
 .gauge-title {
     margin-top: 10px;
+    margin-bottom: 2%;
     font-size: 1.2em;
     color: #000000;
     text-align: center;
