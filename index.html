@@ -3,18 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Globe with Illuminated Cities</title>
+    <title>Order Counter</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap">
 </head>
 <body>
-    <div class="screen">
-        <div id="globe-container" class="section top-left"></div>
-        <div class="section top-right"></div>
-        <div class="section bottom-left"></div>
-        <div class="section bottom-right"></div>
+    <h1>Real time display</h1>
+    <div class="container">
+        <!-- Section de compteur pour Nutrimuscle -->
+        <div class="counter-section">
+            <div class="logo-container">
+                <img src="logo-nutrimuscle.png" alt="Nutrimuscle Logo" class="logo">
+            </div>
+            <div class="counter-container">
+                <div id="counter1">
+                    <div class="digit-wrapper">
+                        <div class="digit">0</div>
+                    </div>
+                    <div class="digit-wrapper">
+                        <div class="digit">0</div>
+                    </div>
+                    <div class="digit-wrapper">
+                        <div class="digit">0</div>
+                    </div>
+                    <div class="digit-wrapper">
+                        <div class="digit">0</div>
+                    </div>
+                </div>
+                <p class="counter-title">Order count</p>
+                <div class="gauge-container">
+                    <div id="gauge1"></div> <!-- Conteneur pour la jauge D3.js -->
+                    <div class="gauge-labels">
+                        <span class="gauge-label">0%</span>
+                        <span class="gauge-label">Target</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Section de compteur pour Nutrielement -->
+        <div class="counter-section">
+            <div class="logo-container">
+                <img src="logo-nutrielement.png" alt="Nutrielement Logo" class="logo">
+            </div>
+            <div class="counter-container">
+                <div id="counter2">
+                    <div class="digit-wrapper">
+                        <div class="digit">0</div>
+                    </div>
+                    <div class="digit-wrapper">
+                        <div class="digit">0</div>
+                    </div>
+                    <div class="digit-wrapper">
+                        <div class="digit">0</div>
+                    </div>
+                    <div class="digit-wrapper">
+                        <div class="digit">0</div>
+                    </div>
+                </div>
+                <p class="counter-title">Order count</p>
+                <div class="gauge-container">
+                    <div id="gauge2"></div> <!-- Conteneur pour la jauge D3.js -->
+                    <div class="gauge-labels">
+                        <span class="gauge-label">0%</span>
+                        <span class="gauge-label">Target</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Image au-dessus du conteneur Nutrielement -->
+            <img src="coming_ soon.png" alt="Overlay Image" class="overlay-image">
+        </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://unpkg.com/three-globe"></script>
+    <!-- Ajoutez la bibliothèque D3.js -->
+    <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
