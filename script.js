@@ -9,7 +9,7 @@ let previousAngle2 = 0;
 
 function triggerConfetti() {
     confetti({
-        particleCount: 300,
+        particleCount: 400,
         spread: 200,
         origin: { y: 0.6 }
     });
