@@ -46,6 +46,7 @@ function updateCounter(counterElement, count) {
 
     // Vérifier si le compteur atteint un multiple de 10 pour déclencher les confettis
     if (Math.floor(count / 10) > Math.floor(previousCount / 10)) {
+        console.log("Triggering confetti!"); // Pour débogage
         triggerConfetti();
     }
 
