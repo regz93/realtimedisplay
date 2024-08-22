@@ -252,3 +252,20 @@ h1 {
     height: auto; /* Ajuster automatiquement la hauteur pour maintenir les proportions */
     z-index: 10; /* Assurez-vous que l'image est au-dessus du conteneur */
 }
+#countdown-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #0496e6; /* Couleur de fond du cadre */
+    color: #ffffff; /* Couleur du texte */
+    border-radius: 5px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    width: 60px; /* Ajustez la largeur si nécessaire */
+}
+
+#countdown {
+    display: inline-block;
+}
