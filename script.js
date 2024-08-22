@@ -8,7 +8,6 @@ let previousAngle1 = 0;
 let previousAngle2 = 0;
 
 function triggerConfetti() {
-    console.log("Triggering confetti!"); // Vérifier dans la console si cela s'affiche
     confetti({
         particleCount: 400,
         spread: 200,
@@ -17,7 +16,7 @@ function triggerConfetti() {
 }
 
 function updateCounter(counterElement, count) {
-    const previousCount = parseInt(counterElement.textContent.replace(/\D/g, ''), 10) || 0; // Sauvegarder la valeur précédente du compteur
+    const previousCount = count; // Sauvegarder la valeur précédente du compteur
     const formattedCount = count.toString().padStart(4, '0');
     const currentDigits = Array.from(counterElement.querySelectorAll('.digit-new')).map(digit => digit.textContent.trim());
 
@@ -46,8 +45,10 @@ function updateCounter(counterElement, count) {
     }, 600);
 
     // Vérifier si le compteur atteint un multiple de 10 pour déclencher les confettis
-   confetti();
-
+    if (Math.floor(count / 10) > Math.floor(previousCount / 10)) {
+        console.log("Triggering confetti!"); // Pour débogage
+        triggerConfetti();
+    }
 
     return count;
 }
@@ -162,8 +163,8 @@ setInterval(async () => {
     target = data[12][1];
 
     // Mettre à jour les compteurs
-    updateCounter(counterElement1, count1);
-    updateCounter(counterElement2, count2);
+    updateCounter(counterElement1, count1, previousCount1);
+    updateCounter(counterElement2, count2, previousCount2);
 
     // Mettre à jour les jauges
     previousAngle1 = updateGauge('gauge1', netsales % target, target, previousAngle1, '#0496e6', 'square1');
@@ -182,7 +183,7 @@ function startCountdown(duration, display) {
 }
 
 window.onload = function () {
-    const countdownDuration = 100; // Durée du compte à rebours en secondes
+    const countdownDuration = 60; // Durée du compte à rebours en secondes
     const display = document.getElementById('countdown');
     startCountdown(countdownDuration, display);
 };
