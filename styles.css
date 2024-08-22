@@ -70,16 +70,17 @@ h1 {
 
 /* Compteurs */
 #counter1, #counter2 {
-    font-size: 2em;
+    font-size: 2.5em;
     text-align: center;
     width: 100%;
     height: 60px;
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
     border: 5px solid #ffffff;
     box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.8);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     position: relative;
     overflow: hidden;
     margin-bottom: 0.5%; /* Espacement entre le compteur et la jauge */
@@ -132,10 +133,11 @@ h1 {
 /* Styles des chiffres */
 .digit-wrapper {
     position: relative;
-    width: 1.5em;
+    width: 1.2em; /*Pour réduie la largeur et rapprocher les chiffres*/
     height: 1.5em;
     overflow: hidden;
     display: inline-block;
+    margin-right: -0.2em; /*Pour réduire l'espace entre les chiffres*/
 }
 
 .digit {
