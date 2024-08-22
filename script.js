@@ -169,3 +169,20 @@ setInterval(async () => {
     previousAngle1 = updateGauge('gauge1', netsales % target, target, previousAngle1, '#0496e6', 'square1');
     previousAngle2 = updateGauge('gauge2', count2 % 100, 100, previousAngle2, '#547e79', 'square2');
 }, 2000);
+function startCountdown(duration, display) {
+    let timer = duration, seconds;
+    setInterval(function () {
+        seconds = parseInt(timer, 10);
+        display.textContent = seconds;
+
+        if (--timer < 0) {
+            timer = duration; // Redémarre le compte à rebours après avoir atteint 0
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    const countdownDuration = 100; // Durée du compte à rebours en secondes
+    const display = document.getElementById('countdown');
+    startCountdown(countdownDuration, display);
+};
