@@ -8,6 +8,7 @@ let previousAngle1 = 0;
 let previousAngle2 = 0;
 
 function triggerConfetti() {
+    console.log("Triggering confetti!"); // Vérifier dans la console si cela s'affiche
     confetti({
         particleCount: 400,
         spread: 200,
@@ -16,7 +17,7 @@ function triggerConfetti() {
 }
 
 function updateCounter(counterElement, count) {
-    const previousCount = count; // Sauvegarder la valeur précédente du compteur
+    const previousCount = parseInt(counterElement.textContent.replace(/\D/g, ''), 10) || 0; // Sauvegarder la valeur précédente du compteur
     const formattedCount = count.toString().padStart(4, '0');
     const currentDigits = Array.from(counterElement.querySelectorAll('.digit-new')).map(digit => digit.textContent.trim());
 
@@ -46,7 +47,6 @@ function updateCounter(counterElement, count) {
 
     // Vérifier si le compteur atteint un multiple de 10 pour déclencher les confettis
     if (Math.floor(count / 10) > Math.floor(previousCount / 10)) {
-        console.log("Triggering confetti!"); // Pour débogage
         triggerConfetti();
     }
 
@@ -163,27 +163,10 @@ setInterval(async () => {
     target = data[12][1];
 
     // Mettre à jour les compteurs
-    updateCounter(counterElement1, count1, previousCount1);
-    updateCounter(counterElement2, count2, previousCount2);
+    updateCounter(counterElement1, count1);
+    updateCounter(counterElement2, count2);
 
     // Mettre à jour les jauges
     previousAngle1 = updateGauge('gauge1', netsales % target, target, previousAngle1, '#0496e6', 'square1');
     previousAngle2 = updateGauge('gauge2', count2 % 100, 100, previousAngle2, '#547e79', 'square2');
 }, 2000);
-function startCountdown(duration, display) {
-    let timer = duration, seconds;
-    setInterval(function () {
-        seconds = parseInt(timer, 10);
-        display.textContent = seconds;
-
-        if (--timer < 0) {
-            timer = duration; // Redémarre le compte à rebours après avoir atteint 0
-        }
-    }, 1000);
-}
-
-window.onload = function () {
-    const countdownDuration = 60; // Durée du compte à rebours en secondes
-    const display = document.getElementById('countdown');
-    startCountdown(countdownDuration, display);
-};
