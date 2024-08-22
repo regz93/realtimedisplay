@@ -24,16 +24,16 @@ function updateCounter(counterElement, count) {
     formattedCount.split('').forEach((digit, index) => {
         const currentDigit = currentDigits[index] || '0';
         if (digit !== currentDigit) {
-            newHtml += `
+            newHtml += 
             <div class="digit-wrapper roll-up">
                 <div class="digit digit-old">${currentDigit}</div>
                 <div class="digit digit-new">${digit}</div>
-            </div>`;
+            </div>;
         } else {
-            newHtml += `
+            newHtml += 
             <div class="digit-wrapper">
                 <div class="digit digit-new">${digit}</div>
-            </div>`;
+            </div>;
         }
     });
 
@@ -121,7 +121,7 @@ function createGauge(containerId, value = data[3][1], maxPoints = 80000, previou
         .attr("class", "gauge-text")
         .attr("x", 0)
         .attr("y", 0)
-        .text(`${Math.round(percent)}%`); // Afficher le pourcentage actuel
+        .text(${Math.round(percent)}%); // Afficher le pourcentage actuel
 
     // Ajouter des étiquettes à l'origine et à la fin de la jauge
     svg.append("text")
@@ -154,7 +154,7 @@ async function fetchData() {
 // Mettre à jour les compteurs et les jauges toutes les 2 secondes
 setInterval(async () => {
     const data = await fetchData();
-    // Supposons que les données renvoyées aient des propriétés `count1` et `count2`
+    // Supposons que les données renvoyées aient des propriétés count1 et count2
     const previousCount1 = count1;
     const previousCount2 = count2;
     count1 = data[2][1];
@@ -169,7 +169,7 @@ setInterval(async () => {
     // Mettre à jour les jauges
     previousAngle1 = updateGauge('gauge1', netsales % target, target, previousAngle1, '#0496e6', 'square1');
     previousAngle2 = updateGauge('gauge2', count2 % 100, 100, previousAngle2, '#547e79', 'square2');
-}, 2000);
+}, 2000); 
 function startCountdown(duration, display) {
     let timer = duration, seconds;
     setInterval(function () {
