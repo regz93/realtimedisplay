@@ -46,9 +46,8 @@ function updateCounter(counterElement, count) {
     }, 600);
 
     // Vérifier si le compteur atteint un multiple de 10 pour déclencher les confettis
-    if (Math.floor(count / 10) > Math.floor(previousCount / 10)) {
-        triggerConfetti();
-    }
+   confetti();
+
 
     return count;
 }
