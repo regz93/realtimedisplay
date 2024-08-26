@@ -8,6 +8,7 @@ let previousAngle1 = 0;
 let previousAngle2 = 0;
 
 function triggerConfetti() {
+    console.log("Triggering confetti!"); // Pour débogage
     confetti({
         particleCount: 400,
         spread: 200,
@@ -15,8 +16,7 @@ function triggerConfetti() {
     });
 }
 
-function updateCounter(counterElement, count) {
-    const previousCount = count; // Sauvegarder la valeur précédente du compteur
+function updateCounter(counterElement, count, previousCount) {
     const formattedCount = count.toString().padStart(4, '0');
     const currentDigits = Array.from(counterElement.querySelectorAll('.digit-new')).map(digit => digit.textContent.trim());
 
@@ -46,14 +46,11 @@ function updateCounter(counterElement, count) {
 
     // Vérifier si le compteur atteint un multiple de 10 pour déclencher les confettis
     if (Math.floor(count / 10) > Math.floor(previousCount / 10)) {
-        console.log("Triggering confetti!"); // Pour débogage
         triggerConfetti();
     }
-
-    return count;
 }
 
-function createGauge(containerId, value = data[3][1], maxPoints = 80000, previousAngle, color, squareClass) {
+function createGauge(containerId, value, maxPoints, previousAngle, color, squareClass) {
     var container = document.getElementById(containerId);
     var w = container.offsetWidth; // Largeur du conteneur
     var h = w / 2; // Hauteur pour un demi-cercle
@@ -170,6 +167,7 @@ setInterval(async () => {
     previousAngle1 = updateGauge('gauge1', netsales % target, target, previousAngle1, '#0496e6', 'square1');
     previousAngle2 = updateGauge('gauge2', count2 % 100, 100, previousAngle2, '#547e79', 'square2');
 }, 2000);
+
 function startCountdown(duration, display) {
     let timer = duration, seconds;
     setInterval(function () {
