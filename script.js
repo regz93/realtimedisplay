@@ -131,7 +131,7 @@ function createGauge(containerId, value, maxPoints, previousAngle, color, square
         .attr("x", w / 2 - 10)
         .attr("y", outerRadius + 20)
         .attr("class", "gauge-text")
-        .text("Target");
+        .text("Daily target");
 
     return newAngle; // Retourner l'angle actuel pour la prochaine mise à jour
 }
