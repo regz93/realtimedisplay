@@ -155,7 +155,7 @@ setInterval(async () => {
     const previousCount1 = count1;
     const previousCount2 = count2;
     count1 = data[2][1];
-    count2 = 0;
+    count2 = data[23][1];
     netsales = data[3][1];
     target = data[12][1];
 
