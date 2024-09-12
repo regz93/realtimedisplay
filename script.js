@@ -155,9 +155,11 @@ setInterval(async () => {
     const previousCount1 = count1;
     const previousCount2 = count2;
     count1 = data[2][1];
-    count2 = data[23][1];
+    count2 = data[20][1];
     netsales = data[3][1];
+    netsales2 = data[3][1];
     target = data[12][1];
+     target2 = data[30][1];
 
     // Mettre à jour les compteurs
     updateCounter(counterElement1, count1, previousCount1);
@@ -165,7 +167,7 @@ setInterval(async () => {
 
     // Mettre à jour les jauges
     previousAngle1 = updateGauge('gauge1', netsales % target, target, previousAngle1, '#0496e6', 'square1');
-    previousAngle2 = updateGauge('gauge2', count2 % 100, 100, previousAngle2, '#547e79', 'square2');
+    previousAngle2 = updateGauge('gauge2', netsales2 %target2, target2, previousAngle2, '#547e79', 'square2');
 }, 2000);
 
 function startCountdown(duration, display) {
