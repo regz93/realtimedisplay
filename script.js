@@ -157,7 +157,7 @@ setInterval(async () => {
     count1 = data[2][1];
     count2 = data[20][1];
     netsales = data[3][1];
-    netsales2 = data[3][1];
+    netsales2 = data[21][1];
     target = data[12][1];
      target2 = data[30][1];
 
