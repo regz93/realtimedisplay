@@ -7,6 +7,23 @@ const counterElement2 = document.getElementById('counter2');
 let previousAngle1 = 0;
 let previousAngle2 = 0;
 
+let soundEnabled = false; // Variable pour suivre si l'utilisateur a interagi
+
+// Charger l'élément audio
+const notificationSound = document.getElementById('notification-sound');
+
+// Détection d'une interaction utilisateur subtile (défilement ou mouvement de souris)
+function enableSoundOnUserInteraction() {
+    if (!soundEnabled) {
+        soundEnabled = true;
+        console.log("Son activé après l'interaction utilisateur subtile.");
+    }
+}
+
+// Activer le son lorsque l'utilisateur interagit subtilement (défilement ou mouvement de souris)
+window.addEventListener('scroll', enableSoundOnUserInteraction);
+window.addEventListener('mousemove', enableSoundOnUserInteraction);
+
 function triggerConfetti() {
     console.log("Triggering confetti!"); // Pour débogage
     confetti({
@@ -48,7 +65,19 @@ function updateCounter(counterElement, count, previousCount) {
     if (Math.floor(count / 10) > Math.floor(previousCount / 10)) {
         triggerConfetti();
     }
+    
+    // Déclencher le son pour counter2 uniquement si soundEnabled est true
+    if (counterElement === counterElement2 && count !== previousCount && soundEnabled) {
+        if (notificationSound) {
+            notificationSound.play().catch(error => console.error('Erreur lors de la lecture du son :', error));
+        } else {
+            console.error("L'élément audio n'a pas été trouvé dans le DOM.");
+        }
+    }
 }
+
+
+
 
 function createGauge(containerId, value, maxPoints, previousAngle, color, squareClass) {
     var container = document.getElementById(containerId);
