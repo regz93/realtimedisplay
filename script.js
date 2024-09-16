@@ -7,7 +7,7 @@ const counterElement2 = document.getElementById('counter2');
 let previousAngle1 = 0;
 let previousAngle2 = 0;
 
-let cdnWindow = null; // Pour stocker la référence à la fenêtre ouverte
+let soundWindow = null; // Stocker la référence de la fenêtre ouverte
 
 function triggerConfetti() {
     confetti({
@@ -17,26 +17,26 @@ function triggerConfetti() {
     });
 }
 
-// Fonction pour jouer le son via une redirection vers la page CDN dans une nouvelle fenêtre
+// Fonction pour jouer le son via une nouvelle fenêtre avec l'URL CDN
 function playNotificationSound() {
     // Ouvrir une nouvelle fenêtre pour jouer le son
-    cdnWindow = window.open(
+    soundWindow = window.open(
         "https://cdn.shopify.com/s/files/1/0705/7142/6045/files/Air_Raid_Siren_Sound_Effect.mp3?v=1726496593",
         "SoundWindow",
-        "width=200,height=100,left=-1000,top=-1000"
+        "width=200,height=100"
     );
 
     // Recharger la fenêtre après 10 secondes
     setTimeout(() => {
-        if (cdnWindow) {
-            cdnWindow.location.reload(); // Recharger la page du CDN
+        if (soundWindow) {
+            soundWindow.location.reload(); // Recharger la page du CDN
         }
     }, 10000);
 
     // Fermer la fenêtre 10 secondes après le rechargement
     setTimeout(() => {
-        if (cdnWindow) {
-            cdnWindow.close();
+        if (soundWindow) {
+            soundWindow.close();
         }
     }, 20000);
 }
