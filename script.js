@@ -7,7 +7,8 @@ const counterElement2 = document.getElementById('counter2');
 let previousAngle1 = 0;
 let previousAngle2 = 0;
 
-let soundWindow = null; // Stocker la référence de la fenêtre ouverte
+let soundWindow = null; // Stocker la référence de l'onglet ouvert pour le son
+let mainPageUrl = window.location.href; // URL actuelle de la page principale
 
 function triggerConfetti() {
     confetti({
@@ -17,28 +18,22 @@ function triggerConfetti() {
     });
 }
 
-// Fonction pour jouer le son via une nouvelle fenêtre avec l'URL CDN
+// Fonction pour jouer le son dans un nouvel onglet
 function playNotificationSound() {
-    // Ouvrir une nouvelle fenêtre pour jouer le son
+    // Ouvrir un nouvel onglet pour jouer le son via le lien CDN
     soundWindow = window.open(
         "https://cdn.shopify.com/s/files/1/0705/7142/6045/files/Air_Raid_Siren_Sound_Effect.mp3?v=1726496593",
-        "SoundWindow",
-        "width=200,height=100"
+        "_blank"
     );
 
-    // Recharger la fenêtre après 10 secondes
+    // Recharger la fenêtre principale après 10 secondes
     setTimeout(() => {
         if (soundWindow) {
-            soundWindow.location.reload(); // Recharger la page du CDN
+            soundWindow.close(); // Fermer l'onglet du son
+            // Réouvrir la page principale dans un nouvel onglet
+            window.open(mainPageUrl, "_blank");
         }
     }, 10000);
-
-    // Fermer la fenêtre 10 secondes après le rechargement
-    setTimeout(() => {
-        if (soundWindow) {
-            soundWindow.close();
-        }
-    }, 20000);
 }
 
 // Fonction pour mettre à jour les compteurs
@@ -70,9 +65,9 @@ function updateCounter(counterElement, count, previousCount) {
         counterElement.querySelectorAll('.roll-down').forEach(element => element.classList.remove('roll-down'));
     }, 600);
 
-    // Vérifier si une nouvelle commande a été passée pour Nutrielement
+    // Si c'est le compteur Nutrielement et qu'il y a une nouvelle commande, jouer le son
     if (counterElement === counterElement2 && count !== previousCount) {
-        playNotificationSound(); // Jouer le son si une nouvelle commande est détectée
+        playNotificationSound(); // Ouvrir le lien CDN dans un nouvel onglet
     }
 }
 
