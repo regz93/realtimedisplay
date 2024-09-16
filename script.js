@@ -9,7 +9,7 @@ let previousAngle2 = 0;
 
 let soundEnabled = false; // Variable pour suivre si l'utilisateur a interagi
 
-// Charger l'élément audio
+// Charger l'élément audio (Option pour un futur usage si nécessaire)
 const notificationSound = document.getElementById('notification-sound');
 
 // Détection d'une interaction utilisateur subtile (défilement ou mouvement de souris)
@@ -31,6 +31,15 @@ function triggerConfetti() {
         spread: 200,
         origin: { y: 0.6 }
     });
+}
+
+// Fonction pour jouer le son dans une nouvelle fenêtre
+function playNotificationSound() {
+    const soundUrl = "https://cdn.shopify.com/s/files/1/0705/7142/6045/files/Air_Raid_Siren_Sound_Effect.mp3?v=1726496593";
+    const popupWindow = window.open(soundUrl, "popupWindow", "width=300,height=100,left=100,top=100");
+    if (popupWindow) {
+        popupWindow.focus(); // Mettre la nouvelle fenêtre en avant
+    }
 }
 
 function updateCounter(counterElement, count, previousCount) {
@@ -66,18 +75,11 @@ function updateCounter(counterElement, count, previousCount) {
         triggerConfetti();
     }
     
-    // Déclencher le son pour counter2 uniquement si soundEnabled est true
-    if (counterElement === counterElement2 && count !== previousCount && soundEnabled) {
-        if (notificationSound) {
-            notificationSound.play().catch(error => console.error('Erreur lors de la lecture du son :', error));
-        } else {
-            console.error("L'élément audio n'a pas été trouvé dans le DOM.");
-        }
+    // Déclencher le son pour counter2 uniquement si le compteur change
+    if (counterElement === counterElement2 && count !== previousCount) {
+        playNotificationSound(); // Jouer le son
     }
 }
-
-
-
 
 function createGauge(containerId, value, maxPoints, previousAngle, color, squareClass) {
     var container = document.getElementById(containerId);
@@ -188,7 +190,7 @@ setInterval(async () => {
     netsales = data[3][1];
     netsales2 = data[21][1];
     target = data[12][1];
-     target2 = data[30][1];
+    target2 = data[30][1];
 
     // Mettre à jour les compteurs
     updateCounter(counterElement1, count1, previousCount1);
