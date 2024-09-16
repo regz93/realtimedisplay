@@ -22,7 +22,7 @@ function triggerConfetti() {
 function playNotificationSound() {
     // Ouvrir un nouvel onglet pour jouer le son via le lien CDN
     soundWindow = window.open(
-        "https://cdn.shopify.com/s/files/1/0705/7142/6045/files/Air_Raid_Siren_Sound_Effect.mp3?v=1726496593",
+        "https://cdn.shopify.com/videos/c/o/v/cff96bfa4d014e1db91f78b7583ddad2.mp4",
         "_blank"
     );
 
