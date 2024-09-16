@@ -1,5 +1,6 @@
 let count1 = 0;
 let count2 = 0;
+let previousCount2 = 0; // Sauvegarde de l'état précédent
 
 const counterElement1 = document.getElementById('counter1');
 const counterElement2 = document.getElementById('counter2');
@@ -7,32 +8,20 @@ const counterElement2 = document.getElementById('counter2');
 let previousAngle1 = 0;
 let previousAngle2 = 0;
 
-let soundWindow = null; // Stocker la référence de l'onglet ouvert pour le son
-let mainPageUrl = window.location.href; // URL actuelle de la page principale
+const soundUrl = "https://cdn.shopify.com/videos/c/o/v/cff96bfa4d014e1db91f78b7583ddad2.mp4";
+let soundPlayed = false;
 
-function triggerConfetti() {
-    confetti({
-        particleCount: 400,
-        spread: 200,
-        origin: { y: 0.6 }
-    });
-}
+// Fonction pour déclencher le son dans un nouvel onglet
+function playSoundInNewTab() {
+    // Ouvrir la vidéo CDN dans un nouvel onglet
+    const newWindow = window.open(soundUrl, "_blank");
 
-// Fonction pour jouer le son dans un nouvel onglet
-function playNotificationSound() {
-    // Ouvrir un nouvel onglet pour jouer le son via le lien CDN
-    soundWindow = window.open(
-        "https://cdn.shopify.com/videos/c/o/v/cff96bfa4d014e1db91f78b7583ddad2.mp4",
-        "_blank"
-    );
-
-    // Recharger la fenêtre principale après 10 secondes
+    // Après 10 secondes, fermer la nouvelle fenêtre et revenir à la page principale
     setTimeout(() => {
-        if (soundWindow) {
-            soundWindow.close(); // Fermer l'onglet du son
-            // Réouvrir la page principale dans un nouvel onglet
-            window.open(mainPageUrl, "_blank");
+        if (newWindow) {
+            newWindow.close(); // Ferme la fenêtre du CDN
         }
+        soundPlayed = false; // Réinitialiser le drapeau pour permettre la prochaine lecture du son
     }, 10000);
 }
 
@@ -65,9 +54,10 @@ function updateCounter(counterElement, count, previousCount) {
         counterElement.querySelectorAll('.roll-down').forEach(element => element.classList.remove('roll-down'));
     }, 600);
 
-    // Si c'est le compteur Nutrielement et qu'il y a une nouvelle commande, jouer le son
-    if (counterElement === counterElement2 && count !== previousCount) {
-        playNotificationSound(); // Ouvrir le lien CDN dans un nouvel onglet
+    // Si c'est le compteur Nutrielement (counter2) et qu'il change, jouer le son
+    if (counterElement === counterElement2 && count !== previousCount && !soundPlayed) {
+        playSoundInNewTab(); // Jouer le son dans un nouvel onglet
+        soundPlayed = true;
     }
 }
 
@@ -170,7 +160,7 @@ async function fetchData() {
 setInterval(async () => {
     const data = await fetchData();
     const previousCount1 = count1;
-    const previousCount2 = count2;
+    previousCount2 = count2; // Sauvegarder l'état précédent
     count1 = data[2][1];
     count2 = data[20][1];
     netsales = data[3][1];
