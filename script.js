@@ -8,30 +8,6 @@ const counterElement2 = document.getElementById('counter2');
 let previousAngle1 = 0;
 let previousAngle2 = 0;
 
-const soundUrl = "https://cdn.shopify.com/videos/c/o/v/d4ec2a79492947e2a3a9ba56670894aa.mp4";
-const realTimeDisplayUrl = "https://regz93.github.io/globeNe/";
-let soundPlayed = false;
-
-// Fonction pour jouer la vidéo CDN dans un nouvel onglet et ensuite ouvrir le Real Time Data Display dans un autre nouvel onglet
-function playSoundInNewTab() {
-    // Ouvrir la vidéo CDN dans un nouvel onglet
-    const cdnWindow = window.open(soundUrl, "_blank");
-
-    // Après 10 secondes, ouvrir un nouvel onglet avec la page Real Time Data Display
-    setTimeout(() => {
-        if (cdnWindow) {
-            const realTimeWindow = window.open(realTimeDisplayUrl, "_blank");
-            // Fermer l'onglet de la vidéo CDN après 10 secondes
-            setTimeout(() => {
-                if (cdnWindow) {
-                    cdnWindow.close();
-                }
-            }, 10000); // Fermer après 10 secondes
-        }
-        soundPlayed = false; // Réinitialiser pour permettre à nouveau le son à la prochaine commande
-    }, 10000);
-}
-
 // Fonction pour mettre à jour les compteurs
 function updateCounter(counterElement, count, previousCount) {
     const formattedCount = count.toString().padStart(4, '0');
@@ -60,12 +36,6 @@ function updateCounter(counterElement, count, previousCount) {
         counterElement.querySelectorAll('.roll-up').forEach(element => element.classList.remove('roll-up'));
         counterElement.querySelectorAll('.roll-down').forEach(element => element.classList.remove('roll-down'));
     }, 600);
-
-    // Si c'est le compteur Nutrielement (counter2) et qu'il change, jouer le son
-    if (counterElement === counterElement2 && count !== previousCount && !soundPlayed) {
-        playSoundInNewTab(); // Jouer le son dans un nouvel onglet
-        soundPlayed = true;
-    }
 }
 
 function createGauge(containerId, value, maxPoints, previousAngle, color, squareClass) {
