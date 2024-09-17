@@ -9,19 +9,26 @@ let previousAngle1 = 0;
 let previousAngle2 = 0;
 
 const soundUrl = "https://cdn.shopify.com/videos/c/o/v/cff96bfa4d014e1db91f78b7583ddad2.mp4";
+const realTimeDisplayUrl = "https://regz93.github.io/globeNe/";
 let soundPlayed = false;
 
-// Fonction pour déclencher le son dans un nouvel onglet
+// Fonction pour jouer la vidéo CDN dans un nouvel onglet et ensuite ouvrir le Real Time Data Display dans un autre nouvel onglet
 function playSoundInNewTab() {
     // Ouvrir la vidéo CDN dans un nouvel onglet
-    const newWindow = window.open(soundUrl, "_blank");
+    const cdnWindow = window.open(soundUrl, "_blank");
 
-    // Après 10 secondes, fermer la nouvelle fenêtre et revenir à la page principale
+    // Après 10 secondes, ouvrir un nouvel onglet avec la page Real Time Data Display
     setTimeout(() => {
-        if (newWindow) {
-            newWindow.close(); // Ferme la fenêtre du CDN
+        if (cdnWindow) {
+            const realTimeWindow = window.open(realTimeDisplayUrl, "_blank");
+            // Fermer l'onglet de la vidéo CDN après 10 secondes
+            setTimeout(() => {
+                if (cdnWindow) {
+                    cdnWindow.close();
+                }
+            }, 10000); // Fermer après 10 secondes
         }
-        soundPlayed = false; // Réinitialiser le drapeau pour permettre la prochaine lecture du son
+        soundPlayed = false; // Réinitialiser pour permettre à nouveau le son à la prochaine commande
     }, 10000);
 }
 
