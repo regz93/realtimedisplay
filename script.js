@@ -8,7 +8,7 @@ const counterElement2 = document.getElementById('counter2');
 let previousAngle1 = 0;
 let previousAngle2 = 0;
 
-const soundUrl = "https://cdn.shopify.com/videos/c/o/v/cff96bfa4d014e1db91f78b7583ddad2.mp4";
+const soundUrl = "https://cdn.shopify.com/videos/c/o/v/d4ec2a79492947e2a3a9ba56670894aa.mp4";
 const realTimeDisplayUrl = "https://regz93.github.io/globeNe/";
 let soundPlayed = false;
 
