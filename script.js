@@ -150,8 +150,8 @@ setInterval(async () => {
     updateCounter(counterElement2, count2, previousCount2);
 
     // Mettre à jour les jauges
-    previousAngle1 = updateGauge('gauge1', netsales % target, target, previousAngle1, '#0496e6', 'square1');
-    previousAngle2 = updateGauge('gauge2', netsales2 % target2, target2, previousAngle2, '#547e79', 'square2');
+    previousAngle1 = updateGauge('gauge1', netsales, target, previousAngle1, '#0496e6', 'square1');
+    previousAngle2 = updateGauge('gauge2', netsales2, target2, previousAngle2, '#547e79', 'square2');
 }, 2000);
 
 function startCountdown(duration, display) {
